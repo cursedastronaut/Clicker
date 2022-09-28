@@ -11,17 +11,23 @@
 int main(int argc, char* argv[])
 {
     GLFWwindow* window;
-    pg_backend_glfw_helper_init(&window, "Clicker", pg_config_simple(32, 32, "assets/DB_curses_12x12.png"));
+    pg_backend_glfw_helper_init(&window, "Kimchi Clicker", pg_config_simple(50, 50, "assets/DB_curses_12x12.png"));
 
-    int testIndex = 1;
+    int testIndex = 0;
 
     Game game = {0};
     game_init(&game);
+    //load_save();
+
+
+
+
+
 
     while (glfwWindowShouldClose(window) == GLFW_FALSE)
     {
         pg_backend_glfw_poll_events();
-        pg_clear_all();
+
 
         switch (testIndex)
         {
@@ -35,6 +41,17 @@ int main(int argc, char* argv[])
         glfwSwapBuffers(window);
     }
     
+
+
+
+
+
+
+
+
+
+
+
     game_shutdown(&game);
     pg_shutdown();
     glfwDestroyWindow(window);
