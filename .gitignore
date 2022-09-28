@@ -1,0 +1,5 @@
+**/*.d
+**/*.o
+config.bin
+clicker
+
