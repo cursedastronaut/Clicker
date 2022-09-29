@@ -6,7 +6,9 @@
 #include <playground_backend_glfw.h>
 
 #include "game.h"
+#include "utils/utils.h"
 #include "../tests/test_button.h"
+#include <stdarg.h>
 
 int main(int argc, char* argv[])
 {
@@ -17,10 +19,6 @@ int main(int argc, char* argv[])
 
     Game game = {0};
     game_init(&game);
-    //load_save();
-
-
-
 
 
 

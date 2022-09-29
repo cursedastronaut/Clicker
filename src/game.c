@@ -4,14 +4,16 @@
 #include <playground.h>
 #include <stdio.h>
 #include "game.h"
-#include "utils.c"
+#include "utils/utils.c"
 #include <string.h>
-#include "gui.h"
+#include "gui/gui.h"
 #include "debug/debug.h"
 #include "debug/debug.c"
 #include "scenes/save.c"
 #include "scenes/save.h"
 #include "scenes/map.c"
+#include "scenes/shop/shop.c"
+#include "scenes/shop/shop_npc.c"
 
 void game_init(Game* game)
 {
@@ -22,7 +24,8 @@ void game_init(Game* game)
     game->kimchi_thrown = 0;
     game->kimchi_menu = false;
     game->kimchi_offset = 0;
-    game->scene = 0;
+    game->scene = 0; 
+    
 }
 
 
@@ -50,7 +53,7 @@ void button_throwkimchis(Game* game)
 
 void button_enablemenu(Game* game)
 {
-    if (im_button(1, 6 + game->kimchi_offset, "Bribe the dev' with 30 kimchis for a new feature.") == true)
+    if (im_button(1, 6 + game->kimchi_offset, "Bribe the dev' with 30 kimchis for a new feature.") == true && game->kimchi_menu < 2)
     {
         game->kimchi -= 30;
         game->last_action = 3;
@@ -116,13 +119,15 @@ void display_game(Game* game)
     switch (game->last_action)
     {
     case 1:
-        print_text(0, 49,"You have eaten %d kimchis.", game->kimchi_eated);
+        print_text(0, 49,"You have eaten %d kimchi", game->kimchi_eated, game->kimchi_eated > 1 ? "s." : ".");
         break;
     
     case 2:
         print_text(0, 49,"You have thrown %d kimchis. You wasteful.", game->kimchi_thrown);
         break;
-    
+    case 51:
+        print_text(0, 49,"Shopkeeper: Heya, my comrade!", game->kimchi_thrown);
+        break;
     default:
         break;
     }
@@ -168,6 +173,10 @@ void display_game(Game* game)
     else if (game->scene == 3)
     {
         display_map(game);
+    }
+    else if (game->scene == 4)
+    {
+        npc_shopkeeper(game);
     }
 
     if (game->kimchi_menu >= 1)

@@ -47,7 +47,11 @@ void load(Game* game, int index)
     }
 }
 
+int saveexist(int max_saves)
+{
+    
 
+}
 
 
 

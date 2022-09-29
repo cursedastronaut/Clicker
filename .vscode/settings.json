@@ -2,6 +2,8 @@
     "C_Cpp.errorSquiggles": "Disabled",
     "files.associations": {
         "gui.h": "c",
-        "save.h": "c"
+        "save.h": "c",
+        "glfw3.h": "c",
+        "game.h": "c"
     }
 }
