@@ -1,6 +1,7 @@
 {
     "C_Cpp.errorSquiggles": "Disabled",
     "files.associations": {
-        "gui.h": "c"
+        "gui.h": "c",
+        "save.h": "c"
     }
 }

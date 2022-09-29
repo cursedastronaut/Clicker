@@ -1,5 +1,3 @@
-
-
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
 
@@ -11,6 +9,9 @@
 #include "gui.h"
 #include "debug/debug.h"
 #include "debug/debug.c"
+#include "scenes/save.c"
+#include "scenes/save.h"
+#include "scenes/map.c"
 
 void game_init(Game* game)
 {
@@ -53,7 +54,7 @@ void button_enablemenu(Game* game)
     {
         game->kimchi -= 30;
         game->last_action = 3;
-        game->kimchi_menu = 1;
+        game->kimchi_menu += 1;
         game->kimchi_offset = 6;
     }
 }
@@ -62,38 +63,32 @@ void button_enablemenu(Game* game)
 //Buttons
 void btsc_kimchi(Game* game)
 {
-    if (im_button(3, 2, "Kimchi") == true)
+    if (im_button(3, 2, "Kimchi") == true || im_button(3, 3, "Fridge") == true)
     {
-        
-    }
-    if (im_button(3, 3, "Fridge") == true)
-    {
-        
+        game->scene = 0;
     }
 }
 
-
+void btsc_save(Game* game)
+{
+    if (im_button(35, 2, "Save") == true || im_button(35, 3, "Menu") == true)
+    {
+        game->scene = 2;
+    }
+}
 
 void button_debug(Game* game)
 {
     if (game->scene != 99)
     {
-        if (im_button(40, 2, "Debug'") == true)
-        {
-            game->scene = 99;
-        }
-        if (im_button(40, 3, " Menu ") == true)
+        if (im_button(40, 2, "Debug'") == true || im_button(40, 3, " Menu ") == true)
         {
             game->scene = 99;
         }
     }
     else 
     {
-        if (im_button(40, 2, "Debug'") == true)
-        {
-            game->scene = 0;
-        }
-        if (im_button(40, 3, " Menu ") == true)
+        if (im_button(40, 2, "Debug'") == true || im_button(40, 3, " Menu ") == true)
         {
             game->scene = 0;
         }
@@ -163,8 +158,19 @@ void display_game(Game* game)
         debug_button_kimchi_eated(game);
         debug_button_last_action(game);
     }
+    else if (game->scene == 2)
+    {
+        save_button(game, 1);
+        save_button(game, 2);
+        save_button(game, 3);
+        save_button(game, 4);
+    }
+    else if (game->scene == 3)
+    {
+        display_map(game);
+    }
 
-    if (game->kimchi_menu == 1)
+    if (game->kimchi_menu >= 1)
     {
         im_print(0, 0, "\xC9\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xBB");
         im_print(0, 1, "\xBA                                                \xBA");
@@ -173,6 +179,11 @@ void display_game(Game* game)
         im_print(0, 4, "\xBA                                                \xBA");
         im_print(0, 5, "\xC8\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xBC");
         btsc_kimchi(game);
+        btsc_save(game);
+        if (game->kimchi_menu == 2)
+        {
+            btsc_map(game);
+        }
     }
 
     button_debug(game);
@@ -192,17 +203,16 @@ void display_game(Game* game)
 
 void game_update(Game* game)
 {
-    //pg_io_get_frame_time();
-    if (game->timepassing == 50)
+    game->frameTime = pg_io_get_frame_time();
+    if (game->timepassing >= 1 / game->kimchi_per_second)
     {
         game->timepassing = 0;
-        game->kimchi += game->kimchi_per_second;
+        game->kimchi++;
     }
-
+    game->timepassing += game->frameTime; 
 
     pg_clear_all();
     display_game(game);
-    game->timepassing++;
 }
 
 

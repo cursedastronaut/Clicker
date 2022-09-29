@@ -11,14 +11,14 @@ void debug_button_kimchi_per_second(Game* game)
 {
     if (im_button(1, 8, "K/s = ") == true && pg_io_key_down(GLFW_KEY_RIGHT))
     {
-        game->kimchi_per_second ++;
+        game->kimchi_per_second += 1.0;
     }
     else if (im_button(1, 8, "K/s = ") == true && pg_io_key_down(GLFW_KEY_LEFT))
     {
-        game->kimchi_per_second --;
+        game->kimchi_per_second -= 1.0;
     }
-    print_text(8, 8,"%d", game->kimchi_per_second);
-    print_text(8, 9,"%d", pg_io_key_down(GLFW_KEY_RIGHT));
+    print_text(8, 8,"%1.f", game->kimchi_per_second);
+    print_text(8, 9,"%1.d", pg_io_key_down(GLFW_KEY_RIGHT));
 }
 void debug_button_last_action(Game* game)
 {

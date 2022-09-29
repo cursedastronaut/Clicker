@@ -4,8 +4,9 @@
 typedef struct Game
 {
     int kimchi;
-    int timepassing;
-    int kimchi_per_second;
+    float timepassing;
+    float frameTime;
+    float kimchi_per_second;
     int last_action;
     int kimchi_eated;
     int kimchi_thrown;
