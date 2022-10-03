@@ -4,6 +4,8 @@
         "gui.h": "c",
         "save.h": "c",
         "glfw3.h": "c",
-        "game.h": "c"
+        "game.h": "c",
+        "playground.h": "c",
+        "atomic": "c"
     }
 }

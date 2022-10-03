@@ -18,6 +18,8 @@ typedef struct Game
 
 
     int scene;
+    int is_dialog;
+    int currentDialog;
 
 } Game;
 

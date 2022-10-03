@@ -56,3 +56,11 @@ void debug_button_kimchi_thrown(Game* game)
     }
     print_text(18, 14,"%d", game->kimchi_thrown);
 }
+
+void scene99_debug(Game* game)
+{
+    debug_button_kimchi_per_second(game);
+    debug_button_kimchi_thrown(game);
+    debug_button_kimchi_eated(game);
+    debug_button_last_action(game);
+}

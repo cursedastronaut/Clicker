@@ -5,6 +5,7 @@
 #include <playground_backend_glfw.h>
 #include <stdarg.h>
 #include <stdio.h>
+#include "../utils/dialog.c"
 #include "../game.h"
 
 void btsc_map(Game* game)
@@ -33,6 +34,15 @@ void map_moveshop(Game* game)
     }*/
 }
 
+void map_piou(Game* game)
+{
+    if ((im_button(39, 17, " ")))
+    {
+        game->is_dialog = 1;
+        game->currentDialog = 1;
+    }
+}
+
 void display_map(Game* game)
 {
     print_text(0, 9, "    __________ ,,");
@@ -49,7 +59,7 @@ void display_map(Game* game)
     print_text(34, 13, "|[] | | []|[]|");
     print_text(34, 14, "|   | |   |  |");
 
-
+    map_piou(game);
     map_moveshop(game);
 }    
 

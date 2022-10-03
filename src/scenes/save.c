@@ -24,14 +24,14 @@ void save(Game* game, int index)
     fclose(savefile);
 }
 
-void load(Game* game, int index)
+int load(Game* game, int index)
 {
     char buffer[19];
     sprintf(buffer, "save%d.sav", index);
     FILE* savefile = fopen(buffer, "r");
     if (savefile == NULL)
     {
-
+        return 1;
     }
     else
     {
@@ -43,6 +43,7 @@ void load(Game* game, int index)
         game->kimchi_thrown = fgetc(savefile);
         game->last_action = fgetc(savefile);
         game->timepassing = fgetc(savefile);
+        game->is_dialog = fgetc(savefile);
         fclose(savefile);
     }
 }

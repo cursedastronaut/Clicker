@@ -22,7 +22,7 @@ int main(int argc, char* argv[])
 
 
 
-    while (glfwWindowShouldClose(window) == GLFW_FALSE)
+    while (glfwWindowShouldClose(window) == GLFW_FALSE && pg_io_key_down(GLFW_KEY_ESCAPE) != 1)
     {
         pg_backend_glfw_poll_events();
 
