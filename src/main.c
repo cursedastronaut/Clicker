@@ -1,19 +1,21 @@
 
+#include <stdarg.h>
+
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
 
 #include <playground.h>
 #include <playground_backend_glfw.h>
 
+#include "constants.h"
 #include "game.h"
 #include "utils/utils.h"
 #include "../tests/test_button.h"
-#include <stdarg.h>
 
 int main(int argc, char* argv[])
 {
     GLFWwindow* window;
-    pg_backend_glfw_helper_init(&window, "Kimchi Clicker", pg_config_simple(50, 50, "assets/DB_curses_12x12.png"));
+    pg_backend_glfw_helper_init(&window, "Kimchi Clicker", pg_config_simple(WINDOW_WIDTH, 50, "assets/DB_curses_12x12.png"));
 
     int testIndex = 0;
 

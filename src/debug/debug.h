@@ -1,20 +1,20 @@
 #pragma once
-void debug_button_kimchi_per_second();
+void debug_button_kimchi();
 void last_action();
-void kimchi_eated();
-void kimchi_thrown();
+void eated();
+void thrown();
 
 
 /*int kimchi;
-    int kimchi_per_second;
-    int last_action;
-    int kimchi_eated;
-    int kimchi_thrown;
-    int kimchi_menu;
+    int kimchi.per_second;
+    int visual.last_action;
+    int kimchi.eated;
+    int kimchi.thrown;
+    int visual.menu;
 
 
 
-    int kimchi_offset;
+    int visual.offset;
 
 
     int scene;*/

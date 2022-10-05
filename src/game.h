@@ -1,27 +1,51 @@
 #pragma once
+#include "lang/lang.h"
+
+
+typedef struct kimchi
+{
+    int value;
+    float per_second;
+    
+    int eated;
+    int thrown;
+} kimchi;
+
+typedef struct lollipops
+{
+    int value;
+    int rng;
+    int x;
+    int y;
+} lollipops;
+
+typedef struct visual
+{
+    int offset;
+    int menu;
+    int last_action;
+} visual;
 
 // Game data
 typedef struct Game
 {
-    int kimchi;
     float timepassing;
     float frameTime;
-    float kimchi_per_second;
-    int last_action;
-    int kimchi_eated;
-    int kimchi_thrown;
-    int kimchi_menu;
-
-
-
-    int kimchi_offset;
-
 
     int scene;
     int is_dialog;
     int currentDialog;
 
+    const char* language;
+
+    lollipops lollipops;
+    kimchi kimchi;
+    visual visual;
+    Lang lang;
 } Game;
+
+
+
 
 void game_init(Game* game);
 void game_update(Game* game);

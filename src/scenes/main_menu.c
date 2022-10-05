@@ -7,25 +7,25 @@
 #include <stdio.h>
 #include "../utils/dialog.c"
 #include "../game.h"
+#include "../utils/flags.c"
 
 void scene1_mainmenu(Game* game)
 {
-    im_print(4,0, "Kimchi clicker ig... nothing works anyway.");
-    if (im_button(20,3, "New Game"))
+    im_print((WINDOW_WIDTH / 2) - (strlen("Kimchi Clicker") / 2),0, "Kimchi Clicker");
+    if (im_button((WINDOW_WIDTH / 2) - (strlen(game->lang.newgame) / 2),3, game->lang.newgame))
     {
         game->scene = 0;
     }
-    print_text(0, 5, "\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD", 0xC4);
+    draw_box(-1,5,WINDOW_WIDTH + 1,5);
 
 
-
-    im_print(23 ,7, "Load");
-    if (im_button(5,9, "Load slot 1"))
+    im_print((WINDOW_WIDTH / 2) - (strlen(game->lang.load) / 2) ,7, game->lang.load);
+    if (im_button((WINDOW_WIDTH / 4) - (strlen(game->lang.load_slot_1) / 2),9, game->lang.load_slot_1))
     {
         int temp = load(game, 1);
         if (temp == 1)
         {
-            im_print(0,49, "Failed.");
+            game->visual.last_action = 101;
         }
         else
         {
@@ -33,22 +33,40 @@ void scene1_mainmenu(Game* game)
         }
     }
 
-    if (im_button(34, 9, "Load slot 2"))
+    if (im_button(((WINDOW_WIDTH / 4) * 3) - (strlen(game->lang.load_slot_2) / 2), 9, game->lang.load_slot_2))
     {
         game->scene = 0;
         load(game, 2);
     }
 
-    if (im_button(5, 11, "Load slot 3"))
+    if (im_button(((WINDOW_WIDTH / 4)) - (strlen(game->lang.load_slot_3) / 2), 11, game->lang.load_slot_3))
     {
         game->scene = 0;
         load(game, 3);
     }
 
-    if (im_button(34, 11, "Load slot 4"))
+    if (im_button(((WINDOW_WIDTH / 4) * 3) - (strlen(game->lang.load_slot_4) / 2), 11, game->lang.load_slot_4))
     {
         game->scene = 0;
         load(game, 4);
     }
     
+    draw_box(-1,14,WINDOW_WIDTH + 1,14);
+
+    im_print((WINDOW_WIDTH / 2) - (strlen(game->lang.language) / 2) ,16, game->lang.language);
+    if (im_button((WINDOW_WIDTH / 4) - (strlen("English") / 2),18, "English"))
+    {
+        game->language = "en_EN";
+        game_init(game);
+    }
+
+
+    if (im_button(((WINDOW_WIDTH / 4) * 3) - (strlen("Français") / 2), 18, "Fran" "\x87" "ais" "\x03"))
+    {
+        game->language = "fr_FR";
+        game_init(game);
+    }
+    printflag( ((WINDOW_WIDTH / 4) * 3) - (strlen("Français") / 2), 20, "france");
+    printflag( (WINDOW_WIDTH / 4) - (strlen("English") / 2) , 20, "");
+
 }

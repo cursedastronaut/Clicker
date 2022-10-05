@@ -18,6 +18,6 @@ int npc_shopkeeper(Game* game)
 
     if (im_button(15,10, "Talk to the shopkeeper."))
     {
-        game->last_action = 51;
+        game->visual.last_action = 51;
     }
 }

@@ -10,7 +10,7 @@
 
 //à refaire
 //J'en ai marre.
-int dialog_msg(Game* game, char message1, char message2)
+/*int dialog_msg(Game* game, char message1, char message2)
 {
     im_print(0, 42, "\xC9\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xBB");
     im_print(0, 43, "\xBA                                                \xBA");
@@ -42,4 +42,4 @@ void display_dialog(Game* game, int index)
             break;
         }
     }
-}
+}*/

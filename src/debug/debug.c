@@ -11,50 +11,50 @@ void debug_button_kimchi_per_second(Game* game)
 {
     if (im_button(1, 8, "K/s = ") == true && pg_io_key_down(GLFW_KEY_RIGHT))
     {
-        game->kimchi_per_second += 1.0;
+        game->kimchi.per_second += 1.0;
     }
     else if (im_button(1, 8, "K/s = ") == true && pg_io_key_down(GLFW_KEY_LEFT))
     {
-        game->kimchi_per_second -= 1.0;
+        game->kimchi.per_second -= 1.0;
     }
-    print_text(8, 8,"%1.f", game->kimchi_per_second);
+    print_text(8, 8,"%1.f", game->kimchi.per_second);
     print_text(8, 9,"%1.d", pg_io_key_down(GLFW_KEY_RIGHT));
 }
-void debug_button_last_action(Game* game)
+void debug_button_visual_last_action(Game* game)
 {
     if (im_button(1, 10, "Last Action = ") == true && pg_io_key_down(GLFW_KEY_RIGHT))
     {
-        game->last_action ++;
+        game->visual.last_action ++;
     }
     else if (im_button(1, 10, "Last Action = ") == true && pg_io_key_down(GLFW_KEY_LEFT))
     {
-        game->last_action --;
+        game->visual.last_action --;
     }
-    print_text(15, 10,"%d", game->last_action);
+    print_text(15, 10,"%d", game->visual.last_action);
 }
 void debug_button_kimchi_eated(Game* game)
 {
     if (im_button(1, 12, "Kimchi Eated = ") == true && pg_io_key_down(GLFW_KEY_RIGHT))
     {
-        game->kimchi_eated ++;
+        game->kimchi.eated ++;
     }
     else if (im_button(1, 12, "Kimchi Eated = ") == true && pg_io_key_down(GLFW_KEY_LEFT))
     {
-        game->kimchi_eated --;
+        game->kimchi.eated --;
     }
-    print_text(15, 12,"%d", game->kimchi_eated);
+    print_text(15, 12,"%d", game->kimchi.eated);
 }
 void debug_button_kimchi_thrown(Game* game)
 {
     if (im_button(1, 14, "Kimchi Thrown = ") == true && pg_io_key_down(GLFW_KEY_RIGHT))
     {
-        game->kimchi_thrown ++;
+        game->kimchi.thrown ++;
     }
     else if (im_button(1, 14, "Kimchi Thrown = ") == true && pg_io_key_down(GLFW_KEY_LEFT))
     {
-        game->kimchi_thrown --;
+        game->kimchi.thrown --;
     }
-    print_text(18, 14,"%d", game->kimchi_thrown);
+    print_text(18, 14,"%d", game->kimchi.thrown);
 }
 
 void scene99_debug(Game* game)
@@ -62,5 +62,5 @@ void scene99_debug(Game* game)
     debug_button_kimchi_per_second(game);
     debug_button_kimchi_thrown(game);
     debug_button_kimchi_eated(game);
-    debug_button_last_action(game);
+    debug_button_visual_last_action(game);
 }

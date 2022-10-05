@@ -10,40 +10,40 @@
 //Buttons
 void button_eatkimchis(Game* game)
 {
-    if (im_button(1, 2 + game->kimchi_offset, "Eat all the kimchis") == true)
+    if (im_button(1, 2 + game->visual.offset, game->lang.kimchi_eat) == true)
     {
-        game->kimchi_eated += game->kimchi;
-        game->kimchi = 0;
-        game->last_action = 1;
+        game->kimchi.eated += game->kimchi.value;
+        game->kimchi.value= 0;
+        game->visual.last_action = 1;
     }
 }
 
 
 void button_throwkimchis(Game* game)
 {
-    if (im_button(1, 4 + game->kimchi_offset, "Throw 10 kimchis.") == true)
+    if (im_button(1, 4 + game->visual.offset, game->lang.kimchi_throw) == true)
     {
-        game->kimchi_thrown += 10;
-        game->kimchi -= 10;
-        game->last_action = 2;
+        game->kimchi.thrown += 10;
+        game->kimchi.value-= 10;
+        game->visual.last_action = 2;
     }
 }
 
 void button_enablemenu(Game* game)
 {
-    if (im_button(1, 6 + game->kimchi_offset, "Bribe the dev' with 30 kimchis for a new feature.") == true && game->kimchi_menu < 3)
+    if (im_button(1, 6 + game->visual.offset, game->lang.bribe) == true && game->visual.menu < 3)
     {
-        game->kimchi -= 30;
-        game->last_action = 3;
-        game->kimchi_menu += 1;
-        game->kimchi_offset = 6;
+        game->kimchi.value-= 30;
+        game->visual.last_action = 3;
+        game->visual.menu += 1;
+        game->visual.offset = 6;
     }
 }
 
 
 void scene0_kimchibox(Game* game)
 {
-    switch (game->kimchi)
+    switch (game->kimchi.value)
         {
         case 1 ... 9:
             button_eatkimchis(game);

@@ -23,7 +23,8 @@ int im_print(int x, int y, const char* format, ...)
     va_list list;
     va_start(list, format);
 
-    static char buffer[1024];
+    char buffer[1024];
+
     vsprintf(buffer, format, list);
     int len = im_print_text(x, y, buffer);
 

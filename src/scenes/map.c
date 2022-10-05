@@ -5,16 +5,9 @@
 #include <playground_backend_glfw.h>
 #include <stdarg.h>
 #include <stdio.h>
+#include "../constants.h"
 #include "../utils/dialog.c"
 #include "../game.h"
-
-void btsc_map(Game* game)
-{
-    if (im_button(10, 2, "The") || im_button(10, 3, "Map"))
-    {
-        game->scene = 3;
-    }
-}
 
 void map_moveshop(Game* game)
 {
