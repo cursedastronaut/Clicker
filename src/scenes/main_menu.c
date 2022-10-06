@@ -56,14 +56,14 @@ void scene1_mainmenu(Game* game)
     im_print((WINDOW_WIDTH / 2) - (strlen(game->lang.language) / 2) ,16, game->lang.language);
     if (im_button((WINDOW_WIDTH / 4) - (strlen("English") / 2),18, "English"))
     {
-        game->language = "en_EN";
+        game->language = 0;
         game_init(game);
     }
 
 
     if (im_button(((WINDOW_WIDTH / 4) * 3) - (strlen("Français") / 2), 18, "Fran" "\x87" "ais" "\x03"))
     {
-        game->language = "fr_FR";
+        game->language = 1;
         game_init(game);
     }
     printflag( ((WINDOW_WIDTH / 4) * 3) - (strlen("Français") / 2), 20, "france");

@@ -17,6 +17,7 @@
         "utility": "c",
         "string.h": "c",
         "lang.h": "c",
-        "stdarg.h": "c"
+        "stdarg.h": "c",
+        "debug.h": "c"
     }
 }

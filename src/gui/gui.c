@@ -31,6 +31,16 @@ int im_print(int x, int y, const char* txt, ...)
     va_end(list);
 }
 
+int im_print_color(int x, int y, unsigned int fg, unsigned int bg, const char* txt, ...)
+{
+    va_list list;
+    pg_set_default_bg_color(bg);
+    pg_set_default_fg_color(fg);
+    im_print(x, y, txt, list);
+    pg_set_default_bg_color(0xFF000000);
+    pg_set_default_fg_color(0xFFFFFFFF);
+}
+
 bool im_button(int x, int y, const char* text)
 {
     int length = strlen(text);
